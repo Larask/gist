@@ -1,6 +1,7 @@
 <?php
 
 $factory('Gist\User', [
+//    'id' => $faker->uuid,
     'name' => $faker->sentence,
     'username' => $faker->unique()->userName,
     'email' => $faker->unique()->email,
@@ -9,6 +10,7 @@ $factory('Gist\User', [
 
 // And a custom one for anonymous user
 $factory('Gist\User', 'anonymous', [
+//    'id' => $faker->uuid,
     'username' => 'anonymous',
     'name' => $faker->sentence,
     'password' => $faker->words,
@@ -16,6 +18,7 @@ $factory('Gist\User', 'anonymous', [
 ]);
 
 $factory('Gist\Gist', [
+    'id' => $faker->uuid,
     'title' => $faker->sentence,
     'content' => $faker->paragraph,
     'public' => $faker->boolean,

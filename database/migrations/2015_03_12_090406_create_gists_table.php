@@ -14,7 +14,7 @@ class CreateGistsTable extends Migration {
 	{
 		Schema::create('gists', function(Blueprint $table)
 		{
-            $table->string('id',36)->index();
+            $table->string('id',36)->index()->unique();
             $table->string('user_id',36)->nullable()->index();
             $table->string('title');
             $table->longText('content');
