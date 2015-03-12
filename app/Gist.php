@@ -12,6 +12,15 @@ class Gist extends UuidModel {
     public $incrementing = false;
 
     /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'public' => 'boolean'
+    ];
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()

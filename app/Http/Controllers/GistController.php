@@ -4,6 +4,7 @@ use Gist\Http\Requests;
 use Gist\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Gist\Gist;
 
 class GistController extends Controller {
 
@@ -14,7 +15,22 @@ class GistController extends Controller {
 	 */
 	public function index()
 	{
-		//
+        $gist = Gist::with('user')->wherePublic(true)->get();
+
+        $gist = $gist->map( function($gist) {
+
+            $routeData = [
+                'username' => $gist->user->username,
+                'gistId' => substr( $gist->id, 0, 7 )
+            ];
+
+            $gist->link = route('gist.show', $routeData);
+
+            return $gist;
+
+        });
+
+		return $gist;
 	}
 
 	/**
@@ -45,7 +61,10 @@ class GistController extends Controller {
 	 */
 	public function show($user, $gist)
 	{
-		return $gist;
+		return [
+            'user' => $user,
+            'gist' => $gist,
+        ];
 	}
 
 	/**
