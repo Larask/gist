@@ -30,5 +30,8 @@ return [
         'model'  => 'User',
         'secret' => '',
     ],
+    'loggly'   => [
+        'token' => env('LOGGLY_TOKEN'),
+    ],
 
 ];
