@@ -1,12 +1,13 @@
-<?php namespace Gist\Providers;
+<?php
+namespace Gist\Providers;
 
 use Gist\Gist;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Gist\User;
 
-class RouteServiceProvider extends ServiceProvider {
-
+class RouteServiceProvider extends ServiceProvider
+{
 	/**
 	 * This namespace is applied to the controller routes in your routes file.
 	 *
@@ -38,6 +39,10 @@ class RouteServiceProvider extends ServiceProvider {
 
         $router->bind('gistId', function($gistId)
         {
+            // TODO: Weird stuff. Can't pass it via route pattern
+            if ( ! preg_match('/^[a-z0-9]{7,7}$/', $gistId) )
+                abort(404);
+
             $gist = Gist::where('id','like', $gistId . '%')->first();
 
             if ( is_null($gist) )
