@@ -18,7 +18,7 @@ class CreateGistsTable extends Migration {
             $table->unsignedInteger('user_id')->nullable()->index();
             $table->string('title');
             $table->longText('content');
-            $table->tinyInteger('type');
+            $table->boolean('public');
 			$table->timestamps();
             $table->softDeletes();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('SET NULL');
