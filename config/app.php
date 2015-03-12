@@ -135,12 +135,6 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
-
-        /*
-         * Development package Service Providers
-         */
-        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
-
 		/*
 		 * Application Service Providers...
 		 */
