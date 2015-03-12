@@ -37,4 +37,12 @@ class User extends UuidModel implements AuthenticatableContract, CanResetPasswor
      * @var bool
      */
     public $incrementing = false;
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function gists()
+    {
+        return $this->hasMany('Gist\Gist');
+    }
 }

@@ -19,3 +19,8 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::get('users', ['uses' => 'UserController@index', 'as' => 'user.index']);
+Route::get('{username}', ['uses' => 'UserController@show', 'as' => 'user.show']);
+
+Route::get('{username}/{gistId}', ['uses' => 'GistController@show', 'as' => 'gist.show']);

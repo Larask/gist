@@ -1,7 +1,9 @@
 <?php namespace Gist\Providers;
 
+use Gist\Gist;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Gist\User;
 
 class RouteServiceProvider extends ServiceProvider {
 
@@ -24,7 +26,25 @@ class RouteServiceProvider extends ServiceProvider {
 	{
 		parent::boot($router);
 
-		//
+		$router->bind('username', function($username)
+        {
+            $user = User::where('username', '=', $username)->first();
+
+            if ( is_null($user) )
+                abort(404);
+
+            return $user;
+        });
+
+        $router->bind('gistId', function($gistId)
+        {
+            $gist = Gist::where('id','like', $gistId . '%')->first();
+
+            if ( is_null($gist) )
+                abort(404);
+
+            return $gist;
+        });
 	}
 
 	/**
