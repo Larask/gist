@@ -17,7 +17,7 @@ class CreateGistsTable extends Migration {
             $table->string('id',36)->index()->unique();
             $table->string('user_id',36)->nullable()->index();
             $table->string('title');
-            $table->longText('content');
+            $table->binary('content');
             $table->boolean('public');
 			$table->timestamps();
             $table->softDeletes();
