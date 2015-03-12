@@ -7,7 +7,10 @@ class GistTableSeeder extends Seeder {
 
     public function run()
     {
-        TestDummy::times(100)->create('Gist\Gist');
+        foreach(range(0,50) as $index)
+        {
+            TestDummy::times(rand(0,10))->create('Gist\Gist');
+        }
     }
 
 }
