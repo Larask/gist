@@ -66,7 +66,6 @@ class GistController extends Controller
             $user = User::whereUsername('anonymous')->first();
         }
         $gist->user()->associate($user);
-
         if ($gist->save())
         {
             return redirect($gist->present()->link);
