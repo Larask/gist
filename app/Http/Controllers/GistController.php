@@ -1,4 +1,5 @@
-<?php namespace Gist\Http\Controllers;
+<?php
+namespace Gist\Http\Controllers;
 
 use Gist\Http\Requests;
 use Gist\Http\Controllers\Controller;
@@ -6,7 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Gist\Gist;
 
-class GistController extends Controller {
+class GistController extends Controller
+{
 
 	/**
 	 * Display a listing of the resource.
@@ -15,22 +17,22 @@ class GistController extends Controller {
 	 */
 	public function index()
 	{
-        $gist = Gist::with('user')->wherePublic(true)->get();
+        $gists = Gist::with('user')->wherePublic(true)->paginate(20);
 
-        $gist = $gist->map( function($gist) {
+//        $gists = $gists->map( function($gist) {
+//
+//            $routeData = [
+//                'username' => $gist->user->username,
+//                'gistId' => substr( $gist->id, 0, 7 )
+//            ];
+//
+//            $gist->link = route('gist.show', $routeData);
+//
+//            return $gist;
+//
+//        });
 
-            $routeData = [
-                'username' => $gist->user->username,
-                'gistId' => substr( $gist->id, 0, 7 )
-            ];
-
-            $gist->link = route('gist.show', $routeData);
-
-            return $gist;
-
-        });
-
-		return $gist;
+		return view('app.gists.gist-index', compact('gists'));
 	}
 
 	/**

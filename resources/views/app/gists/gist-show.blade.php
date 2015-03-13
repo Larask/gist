@@ -6,7 +6,6 @@
 		<div class="col-md-10 col-md-offset-1">
             <div class="panel">
 
-
                 <div class="panel-footer clearfix">
                     <div class="pull-right">
                         <button class="btn btn-primary">Fork</button>

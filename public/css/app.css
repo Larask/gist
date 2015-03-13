@@ -4825,7 +4825,11 @@ button.close {
  * Application styles
  */
 .snippet--input {
-  height: 40em !important; }
+  height: 25em !important; }
+
+.snippet--display {
+  padding: 10px 0 5px 0;
+  font-weight: bold; }
 
 
 /*# sourceMappingURL=app.css.map */
