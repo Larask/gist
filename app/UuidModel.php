@@ -1,9 +1,11 @@
-<?php namespace Gist;
+<?php
+namespace Gist;
 
 use Illuminate\Database\Eloquent\Model;
 use Gist\Library\Helpers\UuidGenerator;
 
-class UuidModel extends Model {
+class UuidModel extends Model
+{
 
     public static function boot()
     {
@@ -16,4 +18,4 @@ class UuidModel extends Model {
         });
     }
 
-} 
+}

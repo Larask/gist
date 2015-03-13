@@ -18,7 +18,6 @@ $factory('Gist\User', 'anonymous', [
 ]);
 
 $factory('Gist\Gist', [
-    'id' => $faker->uuid,
     'title' => $faker->sentence,
     'content' => $faker->paragraph,
     'public' => $faker->boolean,
