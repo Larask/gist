@@ -65,3 +65,12 @@
 </div>
 <!-- / .container -->
 @endsection
+
+@section('footer')
+<script>
+$(document).ready(function()
+{
+    $("[name='public']").bootstrapSwitch();
+});
+</script>
+@endsection

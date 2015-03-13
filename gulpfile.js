@@ -18,9 +18,13 @@ var path = {
 elixir(function(mix) {
     mix.sass("app.scss",'public/css', {includePaths: ['./bower_components']} )
         .copy( path.bower + 'bootstrap-sass/assets/fonts/**', 'public/fonts')
+        .copy( path.bower + 'bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css', 'public/css/bootstrap-switch.css')
         .scripts([
-           "jquery/dist/jquery.js",
-           "bootstrap-sass/assets/javascripts/bootstrap.js"
-        ], 'public/js/vendor.js', 'bower_components')
-        .version(['js/vendor.js', 'css/app.css']);
+            "jquery/dist/jquery.js",
+            "bootstrap-sass/assets/javascripts/bootstrap.js",
+            "bootstrap-switch/dist/js/bootstrap-switch.js",
+        ], "public/js/all.js", "bower_components")
+        .stylesIn("public/css")
+        .scriptsIn("public/js")
+        .version(['js/all.js', 'css/all.css']);
 });
