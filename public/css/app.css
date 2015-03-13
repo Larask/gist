@@ -4824,5 +4824,8 @@ button.close {
 /*
  * Application styles
  */
+.snippet--input {
+  height: 40em !important; }
+
 
 /*# sourceMappingURL=app.css.map */

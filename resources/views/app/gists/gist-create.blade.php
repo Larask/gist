@@ -1,4 +1,4 @@
-@extends('......app')
+@extends('app')
 
 @section('content')
 <div class="container">
@@ -8,7 +8,7 @@
                 {!! Form::open([
                         'route' => 'gist.store',
                         'method' => 'post',
-                        'class' => 'form-horizontal',
+                        'class' => 'form-vertical',
                     ])
                 !!}
                 <fieldset>
@@ -17,8 +17,8 @@
 
                     <!-- Text input-->
                     <div class="form-group row">
-                        {!! Form::label('title','Mô tả', ['class' => 'col-md-4 control-label'] ) !!}
-                        <div class="col-md-8">
+                        {!! Form::label('title','Mô tả', ['class' => 'col-md-2 control-label'] ) !!}
+                        <div class="col-md-10">
                         {!! Form::text('title','', [
                                 'placeholder' => 'mô tả ngắn cho snippet của bạn...',
                                 'class' => 'form-control input-md',
@@ -29,18 +29,17 @@
 
                     <!-- Textarea-->
                     <div class="form-group row">
-                        {!! Form::label('content','Snippet',['class' => 'col-md-4 control-label'] ) !!}
-                        <div class="col-md-8">
+                        {!! Form::label('content','Snippet',['class' => 'col-md-2 control-label'] ) !!}
+                        <div class="col-md-10">
                         {!! Form::textarea('content','', [
                                 'placeholder' => 'nhập bất cứ nội dung gì vào đây...',
-                                'class' => 'form-control input-md',
+                                'class' => 'form-control input-md snippet--input',
                                 'required',
                                 'title' => 'Bạn phải nhập nội dung để tạo snippet mới'
                            ])
                         !!}
                         </div>
                     </div>
-
                 </fieldset>
 
                 <div class="panel-footer clearfix">
@@ -51,7 +50,11 @@
                 </div>
                 {!! Form::close() !!}
             </div>
+            <!-- /.pannel -->
         </div>
+        <!-- /.col-md-10 -->
 	</div>
+	<!-- / .row -->
 </div>
+<!-- / .container -->
 @endsection
