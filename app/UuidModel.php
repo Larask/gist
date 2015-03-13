@@ -6,7 +6,6 @@ use Gist\Library\Helpers\UuidGenerator;
 
 class UuidModel extends Model
 {
-
     public static function boot()
     {
         parent::boot();
@@ -17,5 +16,4 @@ class UuidModel extends Model
 
         });
     }
-
 }

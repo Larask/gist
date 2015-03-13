@@ -3,13 +3,26 @@ namespace Gist\Http\Controllers;
 
 use Gist\Http\Requests;
 use Gist\Http\Controllers\Controller;
+use Gist\Http\Requests\Web\Gist\GistCreateRequest;
+use Gist\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Gist\Gist;
 
 class GistController extends Controller
 {
+    /**
+     * @var Gist
+     */
+    private $gist;
 
+    /**
+     * @param Gist $gist
+     */
+    public function __construct(Gist $gist)
+    {
+        $this->gist = $gist;
+    }
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -17,20 +30,10 @@ class GistController extends Controller
 	 */
 	public function index()
 	{
-        $gists = Gist::with('user')->wherePublic(true)->paginate(20);
-
-//        $gists = $gists->map( function($gist) {
-//
-//            $routeData = [
-//                'username' => $gist->user->username,
-//                'gistId' => substr( $gist->id, 0, 7 )
-//            ];
-//
-//            $gist->link = route('gist.show', $routeData);
-//
-//            return $gist;
-//
-//        });
+        $gists = Gist::with('user')
+                    ->wherePublic(true)
+                    ->latest()
+                    ->paginate(20);
 
 		return view('app.gists.gist-index', compact('gists'));
 	}
@@ -50,9 +53,23 @@ class GistController extends Controller
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(GistCreateRequest $request)
 	{
-		dd(\Input::all());
+        // TODO: Hacker love this
+        $gist = $this->gist->fill($request->all());
+        $gist->public = (boolean) $request->public;
+        $user = $request->user();
+        if ( ! $user )
+        {
+            #TODO: Refactor this to repository
+            $user = User::whereUsername('anonymous')->first();
+        }
+        $gist->user()->associate($user);
+
+        if ($gist->save())
+        {
+            return redirect('/');
+        }
 	}
 
 	/**

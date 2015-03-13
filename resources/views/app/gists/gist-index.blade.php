@@ -11,7 +11,9 @@
 
                 <div class="row">
                     <div class="col-lg-8">
-                    {{ $gist->user->username }} / {{ $gist->title }}
+                        <a href="{{ $gist->user->present()->link }}">{{ '@'. $gist->user->username }}</a>
+                         /
+                        <a href="{{ $gist->present()->link }}">{{ $gist->title }}</a>
                     </div>
 
                     <div class="col-lg-4">

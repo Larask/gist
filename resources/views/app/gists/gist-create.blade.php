@@ -40,12 +40,19 @@
                         !!}
                         </div>
                     </div>
+
+                    <!-- Checkbox -->
+                    <div class="form-group row">
+                        {!! Form::label('public','Công khai',['class' => 'col-md-2 control-label'] ) !!}
+                        <div class="col-md-10">
+                        {!! Form::checkbox('public', true, ['checked']) !!}
+                        </div>
+                    </div>
                 </fieldset>
 
                 <div class="panel-footer clearfix">
                     <div class="pull-right">
-                        {!! Form::submit('Tạo snippet công khai',['class' => 'btn btn-primary']) !!}
-                        {!! Form::submit('Tạo snippet bí mật',['class' => 'btn btn-warning']) !!}
+                        {!! Form::submit('Tạo snippet',['class' => 'btn btn-primary']) !!}
                     </div>
                 </div>
                 {!! Form::close() !!}
