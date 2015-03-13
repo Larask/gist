@@ -7,9 +7,10 @@ class UuidModel extends Model {
 
     public static function boot()
     {
+        parent::boot();
+
         static::creating(function ($model) {
 
-            //TODO: Check for duplicate uuid
             $model->{$model->getKeyName()} = UuidGenerator::generate($model);
 
         });
