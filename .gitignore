@@ -2,5 +2,7 @@
 /node_modules
 /bower_components
 /public/build
+/public/css
+/public/js
 .env
 storage/database.sqlite
