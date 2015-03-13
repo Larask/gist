@@ -16,7 +16,7 @@ var path = {
 };
 
 elixir(function(mix) {
-    mix.sass("app.scss",'public/css', {includePaths: ['bower_components']} )
+    mix.sass("app.scss",'public/css', {includePaths: ['./bower_components']} )
         .copy( path.bower + 'bootstrap-sass/assets/fonts/**', 'public/fonts')
         .scripts([
            "jquery/dist/jquery.js",
