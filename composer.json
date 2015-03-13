@@ -1,9 +1,11 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
+    "name": "larask/gist",
+    "description": "A Laravel 5 Github Gist Clone from Larask Team.",
     "keywords": [
-        "framework",
-        "laravel"
+        "laravel",
+        "larask",
+        "gist",
+        "laravel vietnam"
     ],
     "license": "MIT",
     "type": "project",
