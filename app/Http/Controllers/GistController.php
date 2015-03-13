@@ -55,9 +55,11 @@ class GistController extends Controller
 	 */
 	public function store(GistCreateRequest $request)
 	{
-        // TODO: Hacker love this
-        $gist = $this->gist->fill($request->all());
-        $gist->public = (boolean) $request->public;
+        // TODO: Crreate command
+        $gist = $this->gist;
+        $gist->content = $request->get('content');
+        $gist->title = ($request->get('title')) ?: 'Untitled';
+        $gist->public = (boolean) $request->get('public');
         $user = $request->user();
 
         if ( ! $user )

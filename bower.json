@@ -16,7 +16,6 @@
   ],
   "dependencies": {
     "bootstrap-sass": "~3.3.3",
-    "bootstrap-switch": "~3.3.2",
     "ace-builds": "~1.1.8"
   }
 }

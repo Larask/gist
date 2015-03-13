@@ -20,6 +20,7 @@
                     'route' => 'gist.store',
                     'method' => 'post',
                     'class' => 'form-vertical',
+                    'id' => 'gist'
                 ])
             !!}
             <fieldset>
@@ -45,17 +46,23 @@
                         <div id="content" class="snippet--input">nhập bất cứ thứ gì vào đây</div>
                     </div>
                 </div>
-
-                <!-- Checkbox -->
-                <div class="form-group row">
-                    {!! Form::label('public','Công khai',['class' => 'col-md-2 control-label'] ) !!}
-                    <div class="col-md-10 col-sm-2">
-                    {!! Form::checkbox('public', true, ['checked']) !!}
-                    </div>
-                </div>
                 <div class="form-group row">
                     <div class="col-md-10 col-md-offset-2">
-                    {!! Form::submit('Tạo snippet',['class' => 'btn btn-primary']) !!}
+                    {!! Form::submit('Tạo snippet công khai',[
+                            'class' => 'btn btn-primary',
+                            'id' => 'btn-public',
+                            'data-loading' => 'Processing...',
+                            'data-public' => true
+                        ])
+                    !!}
+
+                    {!! Form::submit('Tạo snippet bí mật',[
+                            'class' => 'btn btn-success',
+                            'id' => 'btn-private',
+                            'data-loading' => 'Processing...',
+                            'data-public' => false
+                        ])
+                    !!}
                     </div>
                 </div>
             </fieldset>
@@ -74,11 +81,63 @@
 @section('footer')
 <script src="/js/ace/ace.js"></script>
 <script>
-(function($) {
-  $(function() {
-    $("input[name='public']").bootstrapSwitch();
-  });
-})(jQuery);
 var editor = ace.edit("content");
+
+(function($) {
+    $(function() {
+        $('#gist').on('submit', function(event)
+        {
+            event.preventDefault();
+        });
+
+        $('#btn-public').on('click', function(event)
+        {
+            event.preventDefault();
+            send($(this));
+        });
+
+        $('#btn-private').on('click', function(event)
+        {
+            event.preventDefault();
+            send($(this));
+        });
+
+    });
+function send(button)
+{
+    $.ajax({
+        type: 'POST',
+        url: $('#gist').attr('action'),
+        data: {
+            '_token' : $("input[name='_token']").val(),
+            'content' : editor.getSession().getValue(),
+            'title' : $("input[name='title']").val(),
+            'public' : button.data('public')
+        },
+        beforeSend: function(){
+            button.button('loading');
+        },
+        error: function (data) {
+            button.button('reset');
+            if (data.status == '422')
+                alert('validation error');
+            else
+                alert('unknow error');
+        },
+        success: function (data) {
+            button.button('reset');
+            window.location = gistLink(data);
+        }
+    });
+}
+
+function gistLink(data)
+{
+    username = data.user.username;
+    gistId = data.gist.id.substring(0, 7);
+
+    return '/@' + username + '/' + gistId;
+}
+})(jQuery);
 </script>
 @endsection
