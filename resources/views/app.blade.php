@@ -18,7 +18,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-inverse">
-		<div class="container-fluid">
+		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle Navigation</span>
@@ -54,8 +54,14 @@
 
 	@yield('content')
 
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">Copyright @larask.</p>
+        </div>
+    </footer>
 	<!-- Scripts -->
 	<script src="{{ elixir('js/vendor.js') }}"></script>
     @yield('footer')
+
 </body>
 </html>

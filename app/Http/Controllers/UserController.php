@@ -21,9 +21,6 @@ class UserController extends Controller
 
         $result = $users->map(function($user)
                 {
-                    $user = $user->toArray();
-                    $user['profile_link'] = route('user.show', $user['username']);
-
                     return $user;
                 });
 
