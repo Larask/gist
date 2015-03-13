@@ -16,6 +16,7 @@ This is a simple project to create a Github Gist clone with Laravel 5
 - @thangngoc89
 
 # Checklist
+
 -[ ] Installation and Configuration
 -[ ] Model and Migration
 -[ ] Detour - Giới thiệu và sử dụng UUID
