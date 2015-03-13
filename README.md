@@ -17,13 +17,13 @@ This is a simple project to create a Github Gist clone with Laravel 5
 
 # Checklist
 
--[ ] Installation and Configuration
--[ ] Model and Migration
--[ ] Detour - Giới thiệu và sử dụng UUID
--[ ] Database Seeder
--[ ] Routing - Controller
--[ ] View
--[ ] Front-end mockup
+- [x] Installation and Configuration
+- [x] Model and Migration
+- [x] Detour - Giới thiệu và sử dụng UUID
+- [x] Database Seeder
+- [x] Routing - Controller
+- [ ] View
+- [ ] Front-end mockup
 
 # LICENSE
 
