@@ -22,7 +22,7 @@ elixir(function(mix) {
         .scripts([
             "jquery/dist/jquery.js",
             "bootstrap-sass/assets/javascripts/bootstrap.js"
-        ], "public/js/all.js", "bower_components")
+        ], "public/js/vendor.js", "bower_components")
         .scriptsIn("resources/js","public/js/script.js")
         .stylesIn("public/css")
         .version(["js/vendor.js", "js/script.js", "css/all.css"]);
