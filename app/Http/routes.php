@@ -20,7 +20,7 @@ Route::controllers([
 Route::get('trending', ['uses' => 'GistController@index', 'as' => 'gist.index']);
 Route::get('/', ['uses' => 'GistController@create', 'as' => 'gist.create']);
 Route::post('/', ['uses' => 'GistController@store', 'as' => 'gist.store']);
-Route::get('{username}/{gistId}', ['uses' => 'GistController@show', 'as' => 'gist.show']);
+Route::get('@{username}/{gistId}', ['uses' => 'GistController@show', 'as' => 'gist.show']);
 
 Route::get('users', ['uses' => 'UserController@index', 'as' => 'user.index']);
 Route::get('@{username}', ['uses' => 'UserController@show', 'as' => 'user.show']);

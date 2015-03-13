@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title')
-All Gists
+{{ $user->username }}'s snippets
 @endsection
 
 @section('content')
@@ -15,6 +15,7 @@ All Gists
 
     <!-- Sidebar -->
     <div class="col-md-4">
+        @include('app._partials._sidebar-user-profile')
         @include('app._partials._sidebar-search')
         @include('app._partials._sidebar-tags')
     </div>

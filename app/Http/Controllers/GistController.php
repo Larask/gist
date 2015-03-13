@@ -59,6 +59,7 @@ class GistController extends Controller
         $gist = $this->gist->fill($request->all());
         $gist->public = (boolean) $request->public;
         $user = $request->user();
+
         if ( ! $user )
         {
             #TODO: Refactor this to repository
@@ -68,7 +69,7 @@ class GistController extends Controller
 
         if ($gist->save())
         {
-            return redirect('/');
+            return redirect($gist->present()->link);
         }
 	}
 

@@ -1,13 +1,15 @@
-<?php namespace Gist\Http\Controllers;
+<?php
+namespace Gist\Http\Controllers;
 
+use Gist\Gist;
 use Gist\Http\Requests;
 use Gist\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Gist\User;
 
-class UserController extends Controller {
-
+class UserController extends Controller
+{
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -29,26 +31,6 @@ class UserController extends Controller {
 	}
 
 	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-	/**
 	 * Display the specified resource.
 	 *
 	 * @param  int  $id
@@ -56,9 +38,10 @@ class UserController extends Controller {
 	 */
 	public function show($user)
 	{
-        $user->load('gists');
+        // For paginated list
+        $gists = Gist::where('user_id', '=', $user->id)->paginate(20);
 
-        return $user;
+        return view('app.users.user-show', compact('user','gists'));
 	}
 
 	/**
@@ -82,16 +65,4 @@ class UserController extends Controller {
 	{
 		//
 	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
 }
