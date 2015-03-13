@@ -5,9 +5,12 @@ This is a simple project to create a Github Gist clone with Laravel 5
 # Installation (just like any Laravel 5 project)
 
 - Git clone : `git clone https://github.com/Larask/gist`
-- Composer install : `composer install`
+- Install dependencies : 
+    - `composer install`
+    - `npm install` (be sure you've installed node & npm)
 - Config your database credentials in .env file
 - `php artisan migrate`
+- "Generate production file from resources": `gulp`
 - Go to route `/trending` to see what we haved done.
 
 
