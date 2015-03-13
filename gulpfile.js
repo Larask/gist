@@ -12,7 +12,11 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.less('app.less');
-
-    mix.version('css/app.css');
+    mix.sass("app.scss",'public/css', {includePaths: ['bower_components']} )
+        .copy('bower_components/bootstrap-sass/assets/fonts/**', 'public/fonts')
+        .scripts([
+           "jquery/dist/jquery.js",
+           "bootstrap-sass/assets/javascripts/bootstrap.js"
+        ], 'public/js/vendor.js', 'bower_components')
+        .version(['js/vendor.js', 'css/app.css']);
 });
