@@ -1,0 +1,17 @@
+{
+    "name": "gist.larask.com",
+    "version": "0.1.0",
+    "homepage": "http://gist.larask.com",
+    "authors": [
+        "Nam Hoang Luu<nam@larask.com>",
+        "Khoa Dang Nguyen <khoa@larask.com>"
+    ],
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ]
+}
