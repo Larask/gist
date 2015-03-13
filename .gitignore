@@ -1,8 +1,13 @@
+# Ignore libs
 /vendor
 /node_modules
 /bower_components
+
+# Production stuffs
 /public/build
 /public/css
 /public/js
+
+# Ignore files
 .env
 storage/database.sqlite
