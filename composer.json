@@ -52,6 +52,8 @@
             "php -r \"copy('.env.example', '.env');\"",
             "php artisan key:generate",
             "npm install",
+            "npm install bower",
+            "bower install",
             "gulp"
         ]
     },
