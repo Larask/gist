@@ -53,12 +53,13 @@
                     {!! Form::checkbox('public', true, ['checked']) !!}
                     </div>
                 </div>
+                <div class="form-group row">
+                    <div class="col-md-10 col-md-offset-2">
+                    {!! Form::submit('Tạo snippet',['class' => 'btn btn-primary']) !!}
+                    </div>
+                </div>
             </fieldset>
 
-            <div class="panel-footer clearfix">
-                <div class="pull-right">
-                    {!! Form::submit('Tạo snippet',['class' => 'btn btn-primary']) !!}
-                </div>
             </div>
             {!! Form::close() !!}
             </div>

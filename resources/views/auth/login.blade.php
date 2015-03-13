@@ -37,11 +37,10 @@
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
-								<div class="checkbox">
-									<label>
-										<input type="checkbox" name="remember"> Remember Me
-									</label>
-								</div>
+								<label class="checkbox" for="checkbox">
+                                    <input type="checkbox" id="checkbox2" data-toggle="checkbox" name="remember">
+                                    Remember Me
+                                </label>
 							</div>
 						</div>
 

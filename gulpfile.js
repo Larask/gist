@@ -25,7 +25,7 @@ elixir(function(mix) {
             "bootstrap-sass/assets/javascripts/bootstrap.js",
             "bootstrap-switch/dist/js/bootstrap-switch.js"
         ], "public/js/all.js", "bower_components")
+        .scriptsIn("resources/js","public/js/script.js")
         .stylesIn("public/css")
-        //.scriptsIn("public/js/*")
-        .version(['js/all.js', 'css/all.css']);
+        .version(["js/vendor.js", "js/script.js", "css/all.css"]);
 });

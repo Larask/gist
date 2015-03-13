@@ -17,7 +17,7 @@
 	@yield('header')
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-inverse">
+	<nav class="navbar navbar-ct-blue">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -32,7 +32,15 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="/trending">Trending</a></li>
-				</ul>
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="search" class="hidden-xs"><i class="fa fa-search"></i></a>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left navbar-search-form" role="search">
+                    <div class="form-group">
+                        <input type="text" value="" class="form-control" placeholder="Search...">
+                    </div>
+                </form>
 
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
@@ -60,7 +68,8 @@
         </div>
     </footer>
 	<!-- Scripts -->
-	<script src="{{ elixir('js/all.js') }}"></script>
+	<script src="{{ elixir('js/vendor.js') }}"></script>
+	<script src="{{ elixir('js/script.js') }}"></script>
     @yield('footer')
 
 </body>
