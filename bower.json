@@ -17,7 +17,6 @@
   "dependencies": {
     "bootstrap-sass": "~3.3.3",
     "bootstrap-switch": "~3.3.2",
-    "master": "https://github.com/ajaxorg/ace-builds/archive/master.zip",
-    "ace": "~1.1.8"
+    "ace-builds": "~1.1.8"
   }
 }

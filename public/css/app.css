@@ -4825,7 +4825,8 @@ button.close {
  * Application styles
  */
 .snippet--input {
-  height: 25em !important; }
+  min-height: 25em;
+  width: 100%; }
 
 .snippet--display {
   padding: 10px 0 5px 0;
