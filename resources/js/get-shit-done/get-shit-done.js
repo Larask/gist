@@ -1,12 +1,11 @@
 searchVisible = 0;
 transparent = true;
-
 $(document).ready(function(){
     /*      Activate the switches with icons      */
-    $('.switch')['bootstrapSwitch']();
+    //$('.switch')['bootstrapSwitch']();
       
     /*      Activate regular switches        */
-    $("[data-toggle='switch']").wrap('<div class="switch" />').parent().bootstrapSwitch();
+    //$("[data-toggle='switch']").wrap('<div class="switch" />').parent().bootstrapSwitch();
     
     $('[data-toggle="search"]').click(function(){
         if(searchVisible == 0){
