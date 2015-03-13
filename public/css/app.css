@@ -1,3 +1,6 @@
+/*
+ * Vendor styles
+ */
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -4818,5 +4821,8 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+/*
+ * Application styles
+ */
 
 /*# sourceMappingURL=app.css.map */

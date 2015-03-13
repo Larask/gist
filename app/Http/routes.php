@@ -11,15 +11,14 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
-
-Route::get('home', 'HomeController@index');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
 
+Route::get('/', ['uses' => 'GistController@create', 'as' => 'gist.create']);
+Route::post('/', ['uses' => 'GistController@store', 'as' => 'gist.store']);
 Route::get('{username}/{gistId}', ['uses' => 'GistController@show', 'as' => 'gist.show']);
 Route::get('trending', ['uses' => 'GistController@index', 'as' => 'gist.index']);
 

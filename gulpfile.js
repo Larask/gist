@@ -11,9 +11,13 @@ var elixir = require('laravel-elixir');
  |
  */
 
+var path = {
+    bower : 'bower_components/'
+};
+
 elixir(function(mix) {
     mix.sass("app.scss",'public/css', {includePaths: ['bower_components']} )
-        .copy('bower_components/bootstrap-sass/assets/fonts/**', 'public/fonts')
+        .copy( path.bower + 'bootstrap-sass/assets/fonts/**', 'public/fonts')
         .scripts([
            "jquery/dist/jquery.js",
            "bootstrap-sass/assets/javascripts/bootstrap.js"

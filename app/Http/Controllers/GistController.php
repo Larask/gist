@@ -40,7 +40,7 @@ class GistController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('app.gists.gist-create');
 	}
 
 	/**
@@ -50,7 +50,7 @@ class GistController extends Controller {
 	 */
 	public function store()
 	{
-		//
+		dd(\Input::all());
 	}
 
 	/**
