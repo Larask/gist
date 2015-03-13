@@ -18,11 +18,19 @@ This is a simple project to create a Github Gist clone with Laravel 5
 
 - [x] Installation and Configuration
 - [x] Model and Migration
-- [x] Detour - Giới thiệu và sử dụng UUID
+- [x] Detour - Using UUID
 - [x] Database Seeder
 - [x] Routing - Controller
-- [ ] View
-- [ ] Front-end mockup
+- [x] View
+- [x] Front-end mockup
+
+# Screenshot
+
+![image](https://cloud.githubusercontent.com/assets/3049054/6648112/7e0bd15a-ca08-11e4-8292-274225758948.png)
+
+![image](https://cloud.githubusercontent.com/assets/3049054/6648114/8868a538-ca08-11e4-9692-83bad5d92778.png)
+
+![image](https://cloud.githubusercontent.com/assets/3049054/6648126/a88a9632-ca08-11e4-9126-a1069d00af0c.png)
 
 # LICENSE
 
