@@ -3,8 +3,7 @@
 @section('content')
 <div class="container">
 	<div class="row">
-        <div class="panel">
-            <div class="pannel-body">
+	    <div class="col-md-12">
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -66,13 +65,10 @@
                     </div>
                 </div>
             </fieldset>
-
-            </div>
             {!! Form::close() !!}
-            </div>
         </div>
-        <!-- /.pannel -->
-	</div>
+        <!-- / .col-md-12 -->
+    </div>
 	<!-- / .row -->
 </div>
 <!-- / .container -->
@@ -103,41 +99,41 @@ var editor = ace.edit("content");
         });
 
     });
-function send(button)
-{
-    $.ajax({
-        type: 'POST',
-        url: $('#gist').attr('action'),
-        data: {
-            '_token' : $("input[name='_token']").val(),
-            'content' : editor.getSession().getValue(),
-            'title' : $("input[name='title']").val(),
-            'public' : button.data('public')
-        },
-        beforeSend: function(){
-            button.button('loading');
-        },
-        error: function (data) {
-            button.button('reset');
-            if (data.status == '422')
-                alert('validation error');
-            else
-                alert('unknow error');
-        },
-        success: function (data) {
-            button.button('reset');
-            window.location = gistLink(data);
-        }
-    });
-}
+    var send = function(button)
+    {
+        $.ajax({
+            type: 'POST',
+            url: $('#gist').attr('action'),
+            data: {
+                '_token' : $("input[name='_token']").val(),
+                'content' : editor.getSession().getValue(),
+                'title' : $("input[name='title']").val(),
+                'public' : button.data('public')
+            },
+            beforeSend: function(){
+                button.button('loading');
+            },
+            error: function (data) {
+                button.button('reset');
+                if (data.status == '422')
+                    alert('validation error');
+                else
+                    alert('unknow error');
+            },
+            success: function (data) {
+                button.button('reset');
+                window.location = createGistLink(data);
+            }
+        });
+    };
 
-function gistLink(data)
-{
-    username = data.user.username;
-    gistId = data.gist.id.substring(0, 7);
+    var createGistLink = function(data)
+    {
+        username = data.user.username;
+        gistId = data.gist.id.substring(0, 7);
 
-    return '/@' + username + '/' + gistId;
-}
+        return '/@' + username + '/' + gistId;
+    }
 })(jQuery);
 </script>
 @endsection

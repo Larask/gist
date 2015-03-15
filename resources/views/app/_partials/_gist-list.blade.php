@@ -20,7 +20,9 @@
 
     <div class="row snippet--display">
         <div class="col-lg-12">
-            {{ $gist->content }}
+            <pre>
+                {{ $gist->content }}
+            </pre>
         </div>
     </div>
     <!-- /.row -->
