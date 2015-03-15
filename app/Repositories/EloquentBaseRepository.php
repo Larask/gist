@@ -3,23 +3,40 @@ namespace Gist\Repositories;
 
 class EloquentBaseRepository implements BaseRepository
 {
+    /**
+     * @var \Illuminate\Database\Eloquent\Model
+     */
+    protected $model;
+
     public function all()
     {
-        // TODO: Implement all() method.
+        return $this->model->all();
     }
 
-    public function create()
+    public function create(array $attributes = array())
     {
-        // TODO: Implement create() method.
+        return $this->model->create($attributes);
     }
 
-    public function update()
+    public function update(array $attributes = array())
     {
-        // TODO: Implement update() method.
+        return $this->model->update($attributes);
     }
 
     public function delete()
     {
-        // TODO: Implement delete() method.
+        return $this->model->delete();
+    }
+
+    public function with($relations)
+    {
+        if (is_string($relations))
+        {
+            $relations = func_get_args();
+        }
+
+        $this->model = $this->model->with($relations);
+
+        return $this;
     }
 }

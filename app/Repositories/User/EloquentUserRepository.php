@@ -18,4 +18,21 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
     {
         $this->model = $model;
     }
-} 
+
+    /**
+     * Find anonymous user
+     *
+     * @return \Gist\User
+     */
+    public function getAnonymousUser()
+    {
+        $user = $this->model->whereUsername('anonymous')->first();
+
+        if (is_null($user))
+        {
+            throw new \Exception('No anonymous user exception');
+        }
+
+        return $user;
+    }
+}

@@ -19,12 +19,7 @@ class UserController extends Controller
 	{
 		$users =  User::all();
 
-        $result = $users->map(function($user)
-                {
-                    return $user;
-                });
-
-        return $result;
+        return $users;
 	}
 
 	/**

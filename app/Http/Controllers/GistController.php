@@ -4,10 +4,10 @@ namespace Gist\Http\Controllers;
 use Gist\Http\Requests;
 use Gist\Http\Controllers\Controller;
 use Gist\Http\Requests\Web\Gist\GistCreateRequest;
-use Gist\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Gist\Gist;
+use Gist\Repositories\Gist\GistRepository as Gist;
+use Gist\Repositories\User\UserRepository as User;
 
 class GistController extends Controller
 {
@@ -15,13 +15,19 @@ class GistController extends Controller
      * @var Gist
      */
     private $gist;
+    /**
+     * @var User
+     */
+    private $user;
 
     /**
      * @param Gist $gist
+     * @param User $user
      */
-    public function __construct(Gist $gist)
+    public function __construct(Gist $gist, User $user)
     {
         $this->gist = $gist;
+        $this->user = $user;
     }
 	/**
 	 * Display a listing of the resource.
@@ -30,10 +36,7 @@ class GistController extends Controller
 	 */
 	public function index()
 	{
-        $gists = Gist::with('user')
-                    ->wherePublic(true)
-                    ->latest()
-                    ->paginate(20);
+        $gists = $this->gist->with('user')->getPublicGistsWithPaginate();
 
 		return view('app.gists.gist-index', compact('gists'));
 	}
@@ -55,23 +58,16 @@ class GistController extends Controller
 	 */
 	public function store(GistCreateRequest $request)
 	{
-        // TODO: Crreate command
-        $gist = $this->gist;
-        $gist->content = $request->get('content');
-        $gist->title = ($request->get('title')) ?: 'Untitled';
-        $gist->public = (boolean) $request->get('public');
         $user = $request->user();
 
-        if ( ! $user )
+        if (! $user)
         {
-            #TODO: Refactor this to repository
-            $user = User::whereUsername('anonymous')->first();
+            $user = $this->user->getAnonymousUser();
         }
-        $gist->user()->associate($user);
-        if ($gist->save())
-        {
-            return redirect($gist->present()->link);
-        }
+
+        $gist = $this->gist->createWithUserId($request->all(), $user->id);
+
+        return redirect($gist->present()->link);
 	}
 
 	/**
