@@ -49,4 +49,15 @@ class EloquentGistRepository extends EloquentBaseRepository implements GistRepos
 
         return $gist;
     }
+
+    /**
+     * Get all gist create by user with paginate
+     *
+     * @param int $userId
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getByUserIdWithPaginate($userId, $paginate = 20)
+    {
+        return $this->model->whereUserId($userId)->paginate($paginate);
+    }
 }

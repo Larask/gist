@@ -30,9 +30,25 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
 
         if (is_null($user))
         {
-            throw new \Exception('No anonymous user exception');
+            throw new \Exception('No anonymous user');
         }
 
         return $user;
+    }
+
+    /**
+     * Get user from request or return anonymous user
+     *
+     * @param $request \Illuminate\Http\Request
+     * @return \Gist\User
+     */
+    public function getUserFromRequest($request)
+    {
+        if ($user = $request->user())
+        {
+            return $user;
+        }
+
+        return $this->getAnonymousUser();
     }
 }

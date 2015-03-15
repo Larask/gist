@@ -58,12 +58,7 @@ class GistController extends Controller
 	 */
 	public function store(GistCreateRequest $request)
 	{
-        $user = $request->user();
-
-        if (! $user)
-        {
-            $user = $this->user->getAnonymousUser();
-        }
+        $user = $this->user->getUserFromRequest($request);
 
         $gist = $this->gist->createWithUserId($request->all(), $user->id);
 
