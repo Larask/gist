@@ -144,6 +144,7 @@ return [
 		'Gist\Providers\ConfigServiceProvider',
 		'Gist\Providers\EventServiceProvider',
 		'Gist\Providers\RouteServiceProvider',
+        'Gist\Repositories\RepositoriesServiceProvider',
 
 	],
 
