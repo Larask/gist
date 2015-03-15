@@ -30,6 +30,6 @@ interface GistRepository extends BaseRepository
      * @param int $paginate
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getByUserIdWithPaginate($userId, $paginate = 20);
+    public function getByUserIdWithPaginate($userId, $paginate = 20, $order = 'DESC');
 
 }

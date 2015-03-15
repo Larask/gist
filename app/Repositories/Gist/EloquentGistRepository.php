@@ -35,12 +35,10 @@ class EloquentGistRepository extends EloquentBaseRepository implements GistRepos
      */
     public function createWithUserId(array $attributes, $userId)
     {
-        if (is_null($userId))
-        {
+        if (is_null($userId)) {
             throw new \BadMethodCallException('UserId can not be null');
         }
         $gist = $this->model;
-
         $gist->content = $attributes['content'];
         $gist->title = ($attributes['title']) ?: 'Untitled';
         $gist->public = (boolean) $attributes['public'];
@@ -56,8 +54,8 @@ class EloquentGistRepository extends EloquentBaseRepository implements GistRepos
      * @param int $userId
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getByUserIdWithPaginate($userId, $paginate = 20)
+    public function getByUserIdWithPaginate($userId, $paginate = 20, $order = 'DESC')
     {
-        return $this->model->whereUserId($userId)->paginate($paginate);
+        return $this->model->whereUserId($userId)->orderBy($order)->paginate($paginate);
     }
 }

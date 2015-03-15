@@ -28,8 +28,7 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
     {
         $user = $this->model->whereUsername('anonymous')->first();
 
-        if (is_null($user))
-        {
+        if (is_null($user)) {
             throw new \Exception('No anonymous user');
         }
 
@@ -44,8 +43,7 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
      */
     public function getUserFromRequest($request)
     {
-        if ($user = $request->user())
-        {
+        if ($user = $request->user()) {
             return $user;
         }
 
