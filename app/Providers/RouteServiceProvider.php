@@ -27,15 +27,7 @@ class RouteServiceProvider extends ServiceProvider
 	{
 		parent::boot($router);
 
-		$router->bind('username', function($username)
-        {
-            $user = User::where('username', '=', $username)->first();
-
-            if ( is_null($user) )
-                abort(404);
-
-            return $user;
-        });
+        $this->bindUsername($router);
 
         $router->bind('gistId', function($gistId)
         {
@@ -65,5 +57,21 @@ class RouteServiceProvider extends ServiceProvider
 			require app_path('Http/routes.php');
 		});
 	}
+
+    /**
+     * @param Router $router
+     */
+    private function bindUsername(Router $router)
+    {
+        $router->bind('username', function ($username) {
+            $user = User::where('username', '=', $username)->first();
+
+            if (is_null($user)) {
+                abort(404);
+            }
+
+            return $user;
+        });
+    }
 
 }

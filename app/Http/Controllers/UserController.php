@@ -1,15 +1,33 @@
 <?php
 namespace Gist\Http\Controllers;
 
-use Gist\Gist;
 use Gist\Http\Requests;
 use Gist\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Gist\User;
+use Gist\Repositories\Gist\GistRepository as Gist;
+use Gist\Repositories\User\UserRepository as User;
 
 class UserController extends Controller
 {
+    /**
+     * @var UserController
+     */
+    private $user;
+    /**
+     * @var Gist
+     */
+    private $gist;
+
+    /**
+     * @param UserController $user
+     * @param Gist $gist
+     */
+    public function __construct(User $user, Gist $gist)
+    {
+        $this->user = $user;
+        $this->gist = $gist;
+    }
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -17,26 +35,20 @@ class UserController extends Controller
 	 */
 	public function index()
 	{
-		$users =  User::all();
+		$users =  $this->user->all();
 
-        $result = $users->map(function($user)
-                {
-                    return $user;
-                });
-
-        return $result;
+        return $users;
 	}
 
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param \Gist\User $user
 	 * @return Response
 	 */
 	public function show($user)
 	{
-        // For paginated list
-        $gists = Gist::where('user_id', '=', $user->id)->paginate(20);
+        $gists = $this->gist->getByUserIdWithPaginate($user->id);
 
         return view('app.users.user-show', compact('user','gists'));
 	}

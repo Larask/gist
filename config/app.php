@@ -144,6 +144,7 @@ return [
 		'Gist\Providers\ConfigServiceProvider',
 		'Gist\Providers\EventServiceProvider',
 		'Gist\Providers\RouteServiceProvider',
+        'Gist\Repositories\RepositoriesServiceProvider',
 
 	],
 
@@ -194,7 +195,6 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
         'Form'      => 'Collective\Html\FormFacade',
         'Html'      => 'Collective\Html\HtmlFacade',
-
 	],
 
 ];

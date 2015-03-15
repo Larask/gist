@@ -16,7 +16,7 @@ class Registrar implements RegistrarContract
 	public function validator(array $data)
 	{
 		return Validator::make($data, [
-            'username' => 'required|alpha_num|max:20',
+            'username' => 'required|alpha_num|max:20|unique:users,username',
 			'name' => 'required|max:255',
 			'email' => 'required|email|max:255|unique:users',
 			'password' => 'required|confirmed|min:6',
